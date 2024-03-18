@@ -47,7 +47,9 @@ table tr td {
     <main>
         <section>
             <h2>Meeting the Brief</h2>
-            <p>botom text</p>
+            <video controls="" height="480" width="768">
+                <source src = "compsci.mp4">
+            </video>
         </section>
         <section>
             <h2>Investigation</h2>
@@ -94,7 +96,7 @@ table tr td {
                 <li>Sends data over USB to PC</li>
             </ul>
             <p>The user presses button A on the Micro:bit to begin a work session, starting  25-minute timer visualized by dimming LED lights over time. Upon completion, the Micro:bit plays a sound and clears its display, waiting for another button press. If the user presses button B, a rest session begins, starting a similar 5-minute timer in which the user rests until it’s completed. The user can also press the touch logo to cancel an ongoing timer.</p>
-            <p>Whilst the timer is running, the noise level and light level of the environment is simultaneously recorded using the Micro:bit’s built in microphone and light sensor. The user can also press button B to incrementally record the number of times they’ve been distracted. This data is sent to the PC over a USB cable, validated, then written into a CSV. Post-session, the average sound and light level are calculated, and the user is then prompted to input their focus level throughout their work session on a scale of 1-10. After everything has been successfully processed, these four parameters are recorded onto another CSV file.</p>
+            <p>Whilst the timer is running, the noise level and light level of the environment are simultaneously recorded using the Micro:bit’s built in microphone and light sensor. The user can also press button B to incrementally record the number of times they’ve been distracted. This data is sent to the PC over a USB cable, validated, then written into a CSV. Post-session, the average sound and light level are calculated, and the user is then prompted to input their focus level throughout their work session on a scale of 1-10. After everything has been successfully processed, these four parameters are recorded onto another CSV file.</p>
             <p>Description of these four parameters:</p>
             <ul>
                 <li>Average sound level, float</li>
@@ -307,7 +309,7 @@ table tr td {
             <h3>Important code</h3>
             <div>
                 <p>
-                    An important idea that allowed me to collect and store processed data was the idea of having a temporary CSV file and a main CSV file. The temporary CSV file acts as a buffer, holding only the data relevant to the current session, making handling sound data more straightforward. While the Pomodoro timer is running, it writes data to the temporary CSV.  When the timer is completed, the average sound level and max sound level is calculated from the temporary CSV. These parameters, along with the distraction count and focus level, are stored onto the main CSV file. Whenever the program begins running its data collection function again, temporary CSV is then wiped, allowing it to record sound data relevant to only its current session again.                    
+                    An important idea that allowed me to collect and store processed data was the idea of having a temporary CSV file and a main CSV file. The temporary CSV file acts as a buffer, holding only the data relevant to the current session, making handling sound data more straightforward. While the Pomodoro timer is running, it writes data to the temporary CSV.  When the timer is completed, the average sound level and max sound level are calculated from the temporary CSV. These parameters, along with the distraction count and focus level, are stored onto the main CSV file. Whenever the program begins running its data collection function again, temporary CSV is then wiped, allowing it to record sound data relevant to only its current session again.                    
                 </p>
                 <img src="images/code1.png" style="width:50%;height:50%;">
                 <img src="images/code2.png" style="width:50%;height:50%;">
@@ -318,7 +320,7 @@ table tr td {
         <section>
             <h2>Evaluation</h2>
             <p>
-                The major difference between the initial plan and the final artefact is the lack of light senor utilization. My Micro:bit light sensor reads 0, despite being in well-lit rooms. This led me to replacing the light level parameter with the maximum recorded sound level.
+                The major difference between the initial plan and the final artefact is the lack of light sensor utilization. My Micro:bit light sensor reads 0, despite being in well-lit rooms. This led me to replacing the light level parameter with the maximum recorded sound level.
             </p>
             <h3>Evaluating brief requirements</h3>
             <div>
@@ -347,7 +349,7 @@ table tr td {
             <h3>Evaluating user requirements</h3>
             <div>
                 <p>
-                    These four principles described by this article<a href="https://www.tandfonline.com/doi/full/10.1080/10656219.2016.1191926">[1]</a> states the benefits of using a Pomodoro timer:
+                    These four principles described by this article<a href="https://www.tandfonline.com/doi/full/10.1080/10656219.2016.1191926">[1]</a> state the benefits of using a Pomodoro timer:
                 </p>
                 <ul>
                     <li>Limits the amount of time the brain must focus.</li>
@@ -363,7 +365,7 @@ table tr td {
                     Many features that my artefact can be improved on relate to the accuracy of the predictive model. One aspect that could be improved is to increase the size of the dataset. It currently has around 16 hours’ worth of data, which amounts to 38 work sessions in total. With a bigger sample size, the accuracy of the predicted focus level will certainly be more accurate.
                 </p>
                 <p>
-                    Another aspect is that although the focus level is based on a scale from 1-10, linear regression isn’t bounded to a certain range. This can lead it to producing negative values or values over 10, given certain parameters. I simulated the horrible parameters (parameters at max, distractions at 30) and got a predicted focus level of around -40. The best parameters (all parameters at 0) got was 10.05.
+                    Another aspect is that although the focus level is based on a scale from 1-10, linear regression isn’t bounded to a certain range. This can lead it to producing negative values or values over 10, given certain parameters. I simulated the horrible parameters (parameters at max, distractions at 30) and got a predicted focus level of around -40. The best parameters (all parameters at 0) got 10.05.
                 </p>
                 <p>
                     To remedy this, I simply clipped whatever out-of-bounds value the linear regression to a floor of 1 and a ceiling of 10. This is certainly not ideal, and other options such as using a beta regression model, which produces a value of a range 0-1 would be more apt for accuracy. I only chose linear regression because I already understood it from my Maths classes on Statistics 2, but given time to understand beta regression, I would implement that model instead.
@@ -422,7 +424,7 @@ table tr td {
                     </tr>
                     <tr>
                     <td>Meeting the brief</td>
-                    <td>&nbsp;</td>
+                    <td>N/A</td>
                     </tr>
                     <tr>
                     <td>Investigation</td>
